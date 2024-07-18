@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>왼쪽방향이동 슬라이드</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #Container {
+        max-width: 600px;
+        height: auto;
+        margin: auto;
+      }
+      #slideArea {
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        left: 0;
+      }
+      #slide {
+        width: 400%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 0;
+      }
+      img {
+        width: 100%;
+        position: relative;
+      }
+      #btnContainer {
+        text-align: center;
+      }
+      button {
+        width: 100px;
+        border: 1px solid red;
+        border-radius: 10px;
+      }
+      button:hover {
+        background-color: yellow;
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const s1 = document.getElementById('slide');
+        const btn = document.getElementsByTagName('button');
+        let moveX = 0;
+
+        const toLeft = () => {
+          moveX -= 100;
+          s1.style.transition = '1.5s';
+          s1.style.left = moveX + '%';
+        };
+
+        const toRight = () => {
+          moveX += 100;
+          s1.style.transition = '1.5s';
+          s1.style.left = moveX + '%';
+        };
+
+        btn[0].addEventListener('click', toLeft);
+        btn[1].addEventListener('click', toRight);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="Container">
+      <section id="slideArea">
+        <h1>슬라이드</h1>
+        <div id="slide">
+          <img src="images/spring.jpg" alt="봄" />
+          <img src="images/summer.jpg" alt="여름" />
+          <img src="images/fall.jpg" alt="가을" />
+          <img src="images/winter.jpg" alt="겨울" />
+        </div>
+      </section>
+      <div id="btnContainer">
+        <button type="button">&rarr;</button>
+        <button type="button">&larr;</button>
+      </div>
+    </div>
+  </body>
+</html>
